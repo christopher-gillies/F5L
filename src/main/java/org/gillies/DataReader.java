@@ -13,7 +13,7 @@ import org.json.simple.JSONValue;
 public class DataReader {
 	 //https://www.michiganlottery.com/v1/milotto/players/winning_numbers/past/5/2000-01-01/2016-02-5.json?both=0
 	
-	 public List<JSONObject> read(File file) throws IOException {
+	 public List<JSONObject> readLotteryResults(File file) throws IOException {
 		 String s = FileUtils.readFileToString(file);
 		 Object obj = JSONValue.parse(s);
 		 JSONObject head=(JSONObject)obj;
@@ -27,4 +27,16 @@ public class DataReader {
 	 	 
 	 	 return jsonObjects;
 	 }
+	 
+	 public List<DrawingResult> getResults(File file) throws IOException {
+		 
+		 List<JSONObject> objects = readLotteryResults(file);
+		 List<DrawingResult> results = new ArrayList<DrawingResult>(objects.size());
+		 for(JSONObject object : objects) {
+			 results.add(DrawingResult.getDrawingFromJson(object));
+		 }
+		 return results;
+	 }
+	 
+	 
 }

@@ -58,5 +58,7 @@ public class GameObjectTest {
 			entry.getValue().printProbabilities();
 		}
 		
+		go.test(10, 20);
+		
 	}
 }

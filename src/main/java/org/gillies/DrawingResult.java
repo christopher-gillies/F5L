@@ -45,6 +45,18 @@ public class DrawingResult {
 		return this.nums;
 	}
 	
+	public int numContained(List<String> numsToCheck) {
+		int res = 0;
+		for(String num : numsToCheck) {
+			for(int i = 0; i < nums.length; i++) {
+				if(nums[i].equals(num)) {
+					res++;
+				}
+			}
+		}
+		return res;
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
